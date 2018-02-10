@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS `ImageDB` (
+    image_id bigint(20) NOT NULL AUTO_INCREMENT,
+    image_name varchar(200) NOT NULL,
+    build_id varchar(200) NOT NULL,
+    aws_bid varchar(200) NOT NULL,
+    google_bid varchar(200) NOT NULL,
+    rpm_id varchar(200) NOT NULL,
+    PRIMARY KEY (`image_id`)
+);
