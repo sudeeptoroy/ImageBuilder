@@ -9,9 +9,9 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "IMAGEDB")
+@Table(name = "BUILDDB")
 @EntityListeners(AuditingEntityListener.class)
-public class ImageDb {
+public class BuildDb {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

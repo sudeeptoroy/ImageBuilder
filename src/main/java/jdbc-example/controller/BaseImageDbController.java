@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
-public class ImageDBController {
+@RequestMapping("/base")
+public class BaseImageDbController {
 
     @Autowired
-    private ImageDBRepository imageDBRepository;
+    private BaseImageDbRepository baseImageDbRepository;
 
-    @GetMapping("/images")
-    public List<ImageDb> getAllImages() {
-        return imageDBRepository.findAll();
+    @GetMapping("/all")
+    public List<BaseImageDb> getAllImages() {
+        return baseImageDbRepository.findAll();
     }
 }
