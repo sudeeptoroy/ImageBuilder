@@ -11,3 +11,6 @@ VALUES (1, 'ubuntu', 'r1,r2,r3', 'https://aws.ubuntu.ari', 'https://goo.ubuntu.i
 INSERT INTO RPMDB (id, name, version)
 VALUES (1, 'vim', '7.4');
 
+
+INSERT INTO CVEDB (id, name, version)
+VALUES (1, 'vim', '7.1');
