@@ -1,4 +1,4 @@
-package jdbcexample;
+package jdbcexample.model;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.CreatedDate;
@@ -9,21 +9,25 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "RPM")
+@Table(name = "BASEIMAGE")
 @EntityListeners(AuditingEntityListener.class)
-public class Rpm {
+public class BaseImage {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotBlank
+    @Column(unique = true)
     private String name;
 
     @NotBlank
-    private String version;
+    private String awsImageUrl;
 
-    @Column
-    private boolean vulnerability = false;
+    @NotBlank
+    private String googleImageUrl;
+
+    @NotBlank
+    private String digitalImageUrl;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -34,6 +38,11 @@ public class Rpm {
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updatedAt;
+
+    @OneToOne(fetch= FetchType.EAGER)
+    @JoinColumn(name="awsconfig_id")
+    private AwsConfig awsconfig;
+
 
     public Long getId() {
         return id;
@@ -51,20 +60,28 @@ public class Rpm {
         this.name = name;
     }
 
-    public String getVersion() {
-        return version;
+    public String getAwsImageUrl() {
+        return awsImageUrl;
     }
 
-    public void setVersion(String version) {
-        this.version = version;
+    public void setAwsImageUrl(String awsImageUrl) {
+        this.awsImageUrl = awsImageUrl;
     }
 
-    public boolean isVulnerability() {
-        return vulnerability;
+    public String getGoogleImageUrl() {
+        return googleImageUrl;
     }
 
-    public void setVulnerability(boolean vulnerability) {
-        this.vulnerability = vulnerability;
+    public void setGoogleImageUrl(String googleImageUrl) {
+        this.googleImageUrl = googleImageUrl;
+    }
+
+    public String getDigitalImageUrl() {
+        return digitalImageUrl;
+    }
+
+    public void setDigitalImageUrl(String digitalImageUrl) {
+        this.digitalImageUrl = digitalImageUrl;
     }
 
     public Date getCreatedAt() {
@@ -82,5 +99,4 @@ public class Rpm {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-
 }

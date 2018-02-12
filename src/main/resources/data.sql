@@ -14,3 +14,9 @@ VALUES (1, 'vim', '7.4', false, '2038-01-09 03:14:07', '2038-01-09 03:14:07' );
 
 INSERT INTO CVEDB (id, name, version)
 VALUES (1, 'vim', '7.1');
+
+
+INSERT INTO AWSCONFIG (id, type, access_key, secret_key, region, instance_type, ssh_username, ami_name)
+VALUES (1, 'amazon-ebs', 'abcd', 'efgh', 'us-west-1', 't2.micro', 'ubuntu', 'abcd' );
+
+

@@ -1,4 +1,4 @@
-package jdbcexample;
+package jdbcexample.model;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.CreatedDate;
