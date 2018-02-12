@@ -28,3 +28,6 @@ spring:
       settings:
         trace: false
         web-allow-others: false
+
+operations:
+         serviceURL: https://localhost:8080/addonavailability # This is the rest service end point which needs to be consumed.

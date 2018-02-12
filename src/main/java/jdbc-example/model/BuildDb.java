@@ -8,19 +8,23 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.util.Date;
 
+
 @Entity
 @Table(name = "BUILDDB")
 @EntityListeners(AuditingEntityListener.class)
 public class BuildDb {
     @Id
+    @Column(updatable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotBlank
     private String name;
 
-    @NotBlank
-    private String content;
+    private boolean vulnerability;
+
+    @Column(length=1000000)
+    private String fullConfig;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -48,14 +52,6 @@ public class BuildDb {
         this.name = name;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -70,5 +66,21 @@ public class BuildDb {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public boolean getVulnerability() {
+        return vulnerability;
+    }
+
+    public void setVulnerability(boolean vulnerability) {
+        this.vulnerability = vulnerability;
+    }
+
+    public String getFullConfig() {
+        return fullConfig;
+    }
+
+    public void setFullConfig(String fullConfig) {
+        this.fullConfig = fullConfig;
     }
 }

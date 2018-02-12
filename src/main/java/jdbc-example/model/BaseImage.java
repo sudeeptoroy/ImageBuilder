@@ -9,21 +9,19 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "BASEIMAGEDB")
+@Table(name = "BASEIMAGE")
 @EntityListeners(AuditingEntityListener.class)
-public class BaseImageDb {
+public class BaseImage {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotBlank
+    @Column(unique = true)
     private String name;
 
     @NotBlank
-    private String content;
-
-    @NotBlank
-    private String awsAmiUrl;
+    private String awsImageUrl;
 
     @NotBlank
     private String googleImageUrl;
@@ -57,20 +55,12 @@ public class BaseImageDb {
         this.name = name;
     }
 
-    public String getContent() {
-        return content;
+    public String getAwsImageUrl() {
+        return awsImageUrl;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getAwsAmiUrl() {
-        return awsAmiUrl;
-    }
-
-    public void setAwsAmiUrl(String awsAmiUrl) {
-        this.awsAmiUrl = awsAmiUrl;
+    public void setAwsImageUrl(String awsImageUrl) {
+        this.awsImageUrl = awsImageUrl;
     }
 
     public String getGoogleImageUrl() {

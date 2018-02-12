@@ -9,7 +9,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/rpm")
+@RequestMapping("/rpmDb")
 public class RpmDbController {
 
     @Autowired

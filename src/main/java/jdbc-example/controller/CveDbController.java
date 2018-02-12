@@ -9,7 +9,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cve")
+@RequestMapping("/cveDb")
 public class CveDbController {
 
     @Autowired
