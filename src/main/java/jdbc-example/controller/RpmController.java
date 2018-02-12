@@ -9,19 +9,19 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/rpmDb")
-public class RpmDbController {
+@RequestMapping("/rpm")
+public class RpmController {
 
     @Autowired
-    private RpmDbRepository rpmDbRepository;
+    private RpmRepository rpmRepository;
 
-    @RequestMapping("/all")
-    public List<RpmDb> getAllRpms() {
-        return rpmDbRepository.findAll();
+    @RequestMapping("/findall")
+    public List<Rpm> getAllRpms() {
+        return rpmRepository.findAll();
     }
 
-    @PostMapping("/rpm")
-    public RpmDb createRpm (@Valid @RequestBody RpmDb rpm) {
-        return rpmDbRepository.save(rpm);
+    @PostMapping("/add")
+    public Rpm createRpm (@Valid @RequestBody Rpm rpm) {
+        return rpmRepository.save(rpm);
     }
 }

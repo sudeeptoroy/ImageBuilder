@@ -9,9 +9,9 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "RPMDB")
+@Table(name = "RPM")
 @EntityListeners(AuditingEntityListener.class)
-public class RpmDb {
+public class Rpm {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -21,6 +21,19 @@ public class RpmDb {
 
     @NotBlank
     private String version;
+
+    @Column
+    private boolean vulnerability = false;
+
+    @Column(nullable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    private Date createdAt;
+
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
+    private Date updatedAt;
 
     public Long getId() {
         return id;
@@ -44,6 +57,30 @@ public class RpmDb {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public boolean isVulnerability() {
+        return vulnerability;
+    }
+
+    public void setVulnerability(boolean vulnerability) {
+        this.vulnerability = vulnerability;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
 }

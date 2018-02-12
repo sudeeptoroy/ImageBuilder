@@ -8,8 +8,8 @@ VALUES (2, 'test2', true, '{"variables":{"aws_access_key":"","aws_secret_key":""
 INSERT INTO BASEIMAGE (id, name, aws_Image_Url, google_Image_Url, digital_Image_Url, created_at, updated_at)
 VALUES (1, 'ubuntu', 'https://aws.ubuntu.ari', 'https://goo.ubuntu.img', 'https://digi.ubuntu.img', '2038-01-09 03:14:07', '2038-01-09 03:14:07');
 
-INSERT INTO RPMDB (id, name, version)
-VALUES (1, 'vim', '7.4');
+INSERT INTO RPM (id, name, version, vulnerability, created_at, updated_at)
+VALUES (1, 'vim', '7.4', false, '2038-01-09 03:14:07', '2038-01-09 03:14:07' );
 
 
 INSERT INTO CVEDB (id, name, version)
