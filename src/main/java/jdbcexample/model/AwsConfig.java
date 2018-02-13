@@ -8,9 +8,14 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Table(name = "AWSCONFIG")
 @EntityListeners(AuditingEntityListener.class)
 public class AwsConfig {
@@ -23,30 +28,37 @@ public class AwsConfig {
     private String type;
 
     @NotBlank
+    @JsonProperty("access_key")
     private String accessKey;
 
     @NotBlank
+    @JsonProperty("secret_key")
     private String secretKey;
 
     @NotBlank
     private String region;
 
     @NotBlank
+    @JsonProperty("instance_type")
     private String instanceType;
 
     @NotBlank
+    @JsonProperty("ssh_username")
     private String sshUsername;
 
     @NotBlank
+    @JsonProperty("ami_name")
     private String amiName;
 
-    @OneToOne(fetch= FetchType.EAGER)
+    //@OneToOne(fetch= FetchType.LAZY)
+    //@JoinColumn(name="baseimage_id")
+    @OneToOne
+    //@PrimaryKeyJoinColumn(name="baseimage_id")
     @JoinColumn(name="baseimage_id")
-    private BaseImage baseimage;
+    private BaseImage baseImage;
 
     @OneToOne(fetch= FetchType.EAGER, cascade= CascadeType.ALL, mappedBy = "awsconfig")
     private MasterConfig masterConfig;
-
 
     public Long getId() {
         return id;
@@ -112,14 +124,15 @@ public class AwsConfig {
         this.amiName = amiName;
     }
 
-    public BaseImage getBaseimage() {
-        return baseimage;
+    public BaseImage getBaseImage() {
+        return baseImage;
     }
 
-    public void setBaseimage(BaseImage baseimage) {
-        this.baseimage = baseimage;
+    public void setBaseImage(BaseImage baseimage) {
+        this.baseImage = baseimage;
     }
 
+    @JsonIgnore
     public MasterConfig getMasterConfig() {
         return masterConfig;
     }

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "PROVISIONINGCONFIG")
@@ -19,7 +19,10 @@ public class ProvisioningConfig {
     private Long id;
 
     @NotBlank
-    private String data;
+    private String type;
+
+    @NotBlank
+    private String inline;
 
     @OneToOne(fetch= FetchType.EAGER, cascade= CascadeType.ALL, mappedBy = "provisioning")
     private MasterConfig masterConfig;
@@ -32,14 +35,7 @@ public class ProvisioningConfig {
         this.id = id;
     }
 
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
+    @JsonIgnore
     public MasterConfig getMasterConfig() {
         return masterConfig;
     }
@@ -48,4 +44,19 @@ public class ProvisioningConfig {
         this.masterConfig = masterConfig;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getInline() {
+        return inline;
+    }
+
+    public void setInline(String inline) {
+        this.inline = inline;
+    }
 }

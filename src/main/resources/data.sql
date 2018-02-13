@@ -19,11 +19,10 @@ VALUES (1, 'vim', '7.1');
 INSERT INTO AWSCONFIG (id, type, access_key, secret_key, region, instance_type, ssh_username, ami_name, baseimage_id)
 VALUES (1, 'amazon-ebs', 'abcd', 'efgh', 'us-west-1', 't2.micro', 'ubuntu', 'abcd' , 1);
 
-INSERT INTO PROVISIONINGCONFIG (id, data)
-VALUES (1, '{sudo apt-get -y update}');
+INSERT INTO PROVISIONINGCONFIG (id, type, inline)
+VALUES (1, 'shell', 'sleep 30, sudo apt-get update, sudo apt-get install software-properties-common, sudo apt-get install -y python redis-server ansible');
 
 INSERT INTO MASTERCONFIG (id, provisioning_id, awsconfig_id)
 VALUES (1, 1, 1);
-
 
 
