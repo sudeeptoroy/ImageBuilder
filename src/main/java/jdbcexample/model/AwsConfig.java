@@ -40,8 +40,9 @@ public class AwsConfig {
     @NotBlank
     private String amiName;
 
-//    @OneToOne(fetch= FetchType.EAGER, cascade= CascadeType.ALL, mappedBy = "awsconfig")
-//    private BaseImage baseimage;
+    @OneToOne(fetch= FetchType.EAGER)
+    @JoinColumn(name="baseimage_id")
+    private BaseImage baseimage;
 
     @OneToOne(fetch= FetchType.EAGER, cascade= CascadeType.ALL, mappedBy = "awsconfig")
     private MasterConfig masterConfig;
@@ -111,14 +112,13 @@ public class AwsConfig {
         this.amiName = amiName;
     }
 
-  /*  public BaseImage getBaseimage() {
+    public BaseImage getBaseimage() {
         return baseimage;
     }
 
     public void setBaseimage(BaseImage baseimage) {
         this.baseimage = baseimage;
     }
-*/
 
     public MasterConfig getMasterConfig() {
         return masterConfig;

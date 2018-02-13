@@ -39,10 +39,8 @@ public class BaseImage {
     @LastModifiedDate
     private Date updatedAt;
 
-    @OneToOne(fetch= FetchType.EAGER)
-    @JoinColumn(name="awsconfig_id")
+    @OneToOne(fetch= FetchType.EAGER, cascade= CascadeType.ALL, mappedBy = "baseimage")
     private AwsConfig awsconfig;
-
 
     public Long getId() {
         return id;
@@ -99,4 +97,13 @@ public class BaseImage {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    public AwsConfig getAwsconfig() {
+        return awsconfig;
+    }
+
+    public void setAwsconfig(AwsConfig awsconfig) {
+        this.awsconfig = awsconfig;
+    }
+
 }

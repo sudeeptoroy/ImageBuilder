@@ -16,8 +16,8 @@ INSERT INTO CVEDB (id, name, version)
 VALUES (1, 'vim', '7.1');
 
 
-INSERT INTO AWSCONFIG (id, type, access_key, secret_key, region, instance_type, ssh_username, ami_name)
-VALUES (1, 'amazon-ebs', 'abcd', 'efgh', 'us-west-1', 't2.micro', 'ubuntu', 'abcd' );
+INSERT INTO AWSCONFIG (id, type, access_key, secret_key, region, instance_type, ssh_username, ami_name, baseimage_id)
+VALUES (1, 'amazon-ebs', 'abcd', 'efgh', 'us-west-1', 't2.micro', 'ubuntu', 'abcd' , 1);
 
 INSERT INTO PROVISIONINGCONFIG (id, data)
 VALUES (1, '{sudo apt-get -y update}');
