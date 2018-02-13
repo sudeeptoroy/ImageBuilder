@@ -1,0 +1,26 @@
+body {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+h3 {
+  margin-top: 2rem;
+}
+
+.col-grid-div {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #f9fcff;
+  border: 1px solid #a9acaf;
+}
+.col-grid-hdr-div {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #999c9f;
+  border: 1px solid #a9acaf;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
