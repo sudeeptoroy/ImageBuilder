@@ -21,9 +21,8 @@ public class ProvisioningConfig {
     @NotBlank
     private String data;
 
-    @OneToOne(fetch= FetchType.EAGER)
-    @JoinColumn(name="masterconfig_id")
-    private MasterConfig masterconfig;
+    @OneToOne(fetch= FetchType.EAGER, cascade= CascadeType.ALL, mappedBy = "provisioning")
+    private MasterConfig masterConfig;
 
     public Long getId() {
         return id;
@@ -41,12 +40,12 @@ public class ProvisioningConfig {
         this.data = data;
     }
 
-    public MasterConfig getMasterconfig() {
-        return masterconfig;
+    public MasterConfig getMasterConfig() {
+        return masterConfig;
     }
 
-    public void setMasterconfig(MasterConfig masterconfig) {
-        this.masterconfig = masterconfig;
+    public void setMasterConfig(MasterConfig masterConfig) {
+        this.masterConfig = masterConfig;
     }
 
 }

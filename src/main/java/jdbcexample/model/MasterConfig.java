@@ -19,28 +19,13 @@ public class MasterConfig {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne(fetch= FetchType.EAGER, cascade= CascadeType.ALL, mappedBy = "masterconfig")
-    private ProvisioningConfig provisioningRef;
+    @OneToOne(fetch= FetchType.EAGER)
+    @JoinColumn(name="provisioning_id")
+    private ProvisioningConfig provisioning;
 
-    @OneToOne(fetch= FetchType.EAGER, cascade= CascadeType.ALL, mappedBy = "masterconfig")
-    private AwsConfig awsRef;
-
-    public ProvisioningConfig getProvisioningRef() {
-        return provisioningRef;
-    }
-
-    public void setProvisioningRef(ProvisioningConfig provisioningRef) {
-        this.provisioningRef = provisioningRef;
-    }
-
-
-    public AwsConfig getAwsRef() {
-        return awsRef;
-    }
-
-    public void setAwsRef(AwsConfig awsRef) {
-        this.awsRef = awsRef;
-    }
+    @OneToOne(fetch= FetchType.EAGER)
+    @JoinColumn(name="awsconfig_id")
+    private AwsConfig awsconfig;
 
     public Long getId() {
         return id;
@@ -48,6 +33,22 @@ public class MasterConfig {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public ProvisioningConfig getProvisioning() {
+        return provisioning;
+    }
+
+    public void setProvisioning(ProvisioningConfig provisioning) {
+        this.provisioning = provisioning;
+    }
+
+    public AwsConfig getAwsconfig() {
+        return awsconfig;
+    }
+
+    public void setAwsconfig(AwsConfig awsconfig) {
+        this.awsconfig = awsconfig;
     }
 
 }

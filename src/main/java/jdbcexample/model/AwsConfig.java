@@ -40,12 +40,12 @@ public class AwsConfig {
     @NotBlank
     private String amiName;
 
-    @OneToOne(fetch= FetchType.EAGER, cascade= CascadeType.ALL, mappedBy = "awsconfig")
-    private BaseImage baseimage;
+//    @OneToOne(fetch= FetchType.EAGER, cascade= CascadeType.ALL, mappedBy = "awsconfig")
+//    private BaseImage baseimage;
 
-    @OneToOne(fetch= FetchType.EAGER)
-    @JoinColumn(name="masterconfig_id")
-    private MasterConfig masterconfig;
+    @OneToOne(fetch= FetchType.EAGER, cascade= CascadeType.ALL, mappedBy = "awsconfig")
+    private MasterConfig masterConfig;
+
 
     public Long getId() {
         return id;
@@ -111,21 +111,21 @@ public class AwsConfig {
         this.amiName = amiName;
     }
 
-    public BaseImage getBaseimage() {
+  /*  public BaseImage getBaseimage() {
         return baseimage;
     }
 
     public void setBaseimage(BaseImage baseimage) {
         this.baseimage = baseimage;
     }
-
+*/
 
     public MasterConfig getMasterConfig() {
-        return masterconfig;
+        return masterConfig;
     }
 
     public void setMasterConfig(MasterConfig masterconfig) {
-        this.masterconfig = masterconfig;
+        this.masterConfig = masterconfig;
     }
 
 }
