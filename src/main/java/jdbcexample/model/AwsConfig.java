@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @EntityListeners(AuditingEntityListener.class)
 public class AwsConfig {
     @Id
-    @Column(updatable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -50,10 +49,7 @@ public class AwsConfig {
     @JsonProperty("ami_name")
     private String amiName;
 
-    //@OneToOne(fetch= FetchType.LAZY)
-    //@JoinColumn(name="baseimage_id")
-    @OneToOne
-    //@PrimaryKeyJoinColumn(name="baseimage_id")
+    @ManyToOne
     @JoinColumn(name="baseimage_id")
     private BaseImage baseImage;
 

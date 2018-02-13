@@ -7,6 +7,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -44,8 +45,8 @@ public class BaseImage {
     @LastModifiedDate
     private Date updatedAt;
 
-    @OneToOne(cascade= CascadeType.ALL, mappedBy = "baseImage")
-    private AwsConfig awsconfig;
+    @OneToMany(cascade= CascadeType.ALL, mappedBy = "baseImage")
+    private Set<AwsConfig> awsconfig;
 
     public Long getId() {
         return id;
@@ -104,11 +105,12 @@ public class BaseImage {
     }
 
     @JsonIgnore
-    public AwsConfig getAwsconfig() {
+    public Set<AwsConfig> getAwsconfig() {
         return awsconfig;
     }
 
-    public void setAwsconfig(AwsConfig awsconfig) {
+
+    public void setAwsconfig(Set<AwsConfig> awsconfig) {
         this.awsconfig = awsconfig;
     }
 

@@ -36,7 +36,7 @@ var UIModal = function (id, title, content, onSave) {
     var modalHdrDiv = $('<div/>').addClass("modal-header").append("<h5 class=modal-title>"+title+"</h5>");
 	var modalBdyDiv = $('<div/>').addClass("modal-body").append(content);
 	var closeBtn = $('<button/>', { "data-dismiss" : "modal", type : "button" }).addClass("btn btn-secondary").append("Close");
-	var saveBtn = $('<button/>').addClass("btn btn-primary", { type : "button" }).append("Save").click(onSave);
+	var saveBtn = $('<button/>', { "data-dismiss" : "modal", type : "button" }).addClass("btn btn-primary").append("Save").click(onSave);
     saveBtn.myform = content;
 	var modalFtrDiv = $('<div/>').addClass("modal-footer").append(closeBtn).append(saveBtn);
 

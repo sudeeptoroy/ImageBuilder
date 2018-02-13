@@ -15,7 +15,6 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 public class MasterConfig {
     @Id
-    @Column(updatable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 

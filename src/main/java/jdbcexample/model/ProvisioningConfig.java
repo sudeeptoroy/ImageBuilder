@@ -14,7 +14,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @EntityListeners(AuditingEntityListener.class)
 public class ProvisioningConfig {
     @Id
-    @Column(updatable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
