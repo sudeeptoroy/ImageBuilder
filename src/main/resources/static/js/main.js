@@ -19,6 +19,8 @@ var sendBuildReq = function(id) {
 
       success: function(result, status, jqXHR) {
           //alert(JSON.stringify(result));
+           $("#dialog").html(JSON.stringify(result));
+           $("#dialog").dialog("open");
       }});
 }
 
@@ -62,5 +64,17 @@ $( document ).ready(function() {
               var buildForm = new UIBuildForm("buildForm", imageName);
               	$("#main").append(new UIModal("exampleModal", "New Build", buildForm, onBuildsave));
         }});
+
+     $("#dialog").dialog({
+             autoOpen: false,
+             modal: true,
+             title: "Packer JSON",
+             width:'auto',
+             buttons: {
+                 Close: function () {
+                     $(this).dialog('close');
+                 }
+             }
+         });
 });
 

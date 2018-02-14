@@ -48,6 +48,31 @@ var UIModal = function (id, title, content, onSave) {
     return this.modalDivUI;
 };
 
+var UIJson = function (id, title, content, onSave) {
+	this.modalDivUI = $('<div/>',
+	                      { id                : id,
+	                        tabindex          : "-1",
+							"aria-labelledby" : "exampleModalLabel",
+							"aria-hidden"     : "true",
+							role              : "dialog"}).addClass("modal fade bd-example-modal-lg");
+
+
+    var modalHdrDiv = $('<div/>').addClass("modal-header").append("<h5 class=modal-title>"+title+"</h5>");
+	var modalBdyDiv = $('<div/>').addClass("modal-body").append(content);
+	var closeBtn = $('<button/>', { "data-dismiss" : "modal", type : "button" }).addClass("btn btn-secondary").append("Close");
+	var saveBtn = $('<button/>', { "data-dismiss" : "modal", type : "button" }).addClass("btn btn-primary").append("Save").click(onSave);
+        saveBtn.myform = content;
+    	var modalFtrDiv = $('<div/>').addClass("modal-footer").append(closeBtn).append(saveBtn);
+
+
+	//content
+	var modalCntDiv = $('<div/>').addClass("modal-content").append(modalHdrDiv).append(modalBdyDiv).append(modalFtrDiv);
+	var modalDlgDiv = $('<div/>').addClass("modal-dialog").append(modalCntDiv);
+	this.modalDivUI.append(modalDlgDiv);
+
+    return this.modalDivUI;
+};
+
 var UIAccordion = function(id, accData) {
 	this.acc = $('<div/>', { id : id, width : "100%"});
 	for(i = 0; i < accData.length; i++) {
